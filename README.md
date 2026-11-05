@@ -33,7 +33,12 @@ Your Watch's address is on the Worker's page, like `https://feedbakkr-watch.you.
 ### 3. Add the admin key and connect FeedBakkr
 
 1. In FeedBakkr, open **Watch → Set up Watch** and copy the admin key it makes for you.
-2. In Cloudflare, open the Worker's **Settings → Variables and Secrets**. Add a **Secret** called `FEEDBAKKR_WATCH_ADMIN_KEY` with the admin key as its value, then deploy.
+2. In Cloudflare, open the Worker's **Settings → Variables and Secrets** and click **Add**:
+   - **Type:** Secret (not Text, which is the default)
+   - **Variable name:** `FEEDBAKKR_WATCH_ADMIN_KEY`
+   - **Value:** the admin key
+
+   Click **Deploy**. The key is kept when you update Watch.
 3. Back in FeedBakkr, paste your Watch's address.
 
 FeedBakkr registers your app with Watch and gives you an ingest key and the code to add to your app.

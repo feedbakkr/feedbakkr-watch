@@ -6,6 +6,8 @@
 	"compatibility_flags": ["nodejs_compat"],
 	"workers_dev": true,
 	"preview_urls": false,
+	// Keep variables set in the dashboard (like the admin key) when a build deploys.
+	"keep_vars": true,
 	"observability": { "enabled": true },
 
 	// Created for you on first deploy (no database_id needed).
