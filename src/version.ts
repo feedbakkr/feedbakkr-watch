@@ -1,5 +1,5 @@
 /** This release. Kept equal to package.json's version (a test checks). */
-export const VERSION = "1.0.0";
+export const VERSION = "1.0.1";
 
 /**
  * The management API contract, reported by /connection and the manifest.

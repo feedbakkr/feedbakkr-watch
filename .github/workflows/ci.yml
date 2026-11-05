@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   verify:
-    # Copies made by the Deploy to Cloudflare button don't need to run this.
+    # Forks don't need to run this.
     if: github.repository == 'feedbakkr/feedbakkr-watch'
     runs-on: ubuntu-latest
     steps:
