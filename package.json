@@ -1,0 +1,48 @@
+{
+	"name": "feedbakkr-watch",
+	"version": "1.0.0",
+	"private": true,
+	"description": "FeedBakkr Watch: simple, free error tracking that runs on your own Cloudflare account.",
+	"license": "MIT",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/feedbakkr/feedbakkr-watch"
+	},
+	"scripts": {
+		"dev": "wrangler dev --port 9416",
+		"deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+		"migrate:local": "wrangler d1 migrations apply DB --local",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"test": "vitest run",
+		"verify": "biome check . && tsc --noEmit && vitest run",
+		"audit": "pnpm audit --audit-level moderate"
+	},
+	"dependencies": {
+		"@feedbakkr/watch-core": "^0.2.3",
+		"hono": "^4.13.13",
+		"zod": "^4.6.6"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.6.5",
+		"@cloudflare/vitest-plugin": "^1.4.7",
+		"@cloudflare/workers-types": "^5.20261012.1",
+		"typescript": "~6.0.3",
+		"vitest": "^4.1.11",
+		"wrangler": "^4.152.0"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"packageManager": "pnpm@10.34.6",
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"esbuild",
+			"sharp",
+			"workerd"
+		]
+	}
+}

@@ -1,0 +1,24 @@
+name: Bug
+description: Something in Watch isn't working
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Please don't include keys or error contents from your apps. For security problems, use private vulnerability reporting (see SECURITY.md)."
+  - type: input
+    id: version
+    attributes:
+      label: Watch version
+      description: From your Watch's /health page
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can we reproduce it?

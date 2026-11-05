@@ -1,0 +1,7 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
+	"formatter": { "enabled": true, "indentStyle": "tab", "lineWidth": 100 },
+	"linter": { "enabled": true, "rules": { "preset": "recommended" } },
+	"javascript": { "formatter": { "quoteStyle": "double", "semicolons": "always" } },
+	"files": { "includes": ["**", "!**/node_modules", "!**/.wrangler", "!**/coverage"] }
+}

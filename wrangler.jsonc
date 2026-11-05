@@ -1,0 +1,32 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "feedbakkr-watch",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"workers_dev": true,
+	"observability": { "enabled": true },
+
+	// Created for you on first deploy (no database_id needed).
+	"d1_databases": [
+		{ "binding": "DB", "database_name": "feedbakkr-watch", "migrations_dir": "migrations" }
+	],
+
+	// Ingest rate limits: per IP across all keys, and per ingest key overall.
+	// The namespace ids only need to be unique within your Cloudflare account.
+	"ratelimits": [
+		{ "name": "INGEST_LIMITER", "namespace_id": "4101", "simple": { "limit": 60, "period": 60 } },
+		{
+			"name": "INGEST_KEY_LIMITER",
+			"namespace_id": "4102",
+			"simple": { "limit": 300, "period": 60 }
+		}
+	],
+
+	// Events each app may send per UTC day. About 8 rows are written per event,
+	// so 5,000 keeps one app well inside the free plan's 100,000 a day.
+	"vars": { "WATCH_DAILY_EVENTS_PER_APP": "5000" },
+
+	// Daily clean-up at 03:30 UTC.
+	"triggers": { "crons": ["30 3 * * *"] }
+}

@@ -1,0 +1,4 @@
+# The admin key: wcha_ followed by at least 27 random characters. FeedBakkr
+# makes one for you in its Watch setup. Keep it secret; it can see and change
+# everything in this Watch.
+FEEDBAKKR_WATCH_ADMIN_KEY=
