@@ -21,7 +21,7 @@
 		"audit": "pnpm audit --audit-level moderate"
 	},
 	"dependencies": {
-		"@feedbakkr/watch-core": "^0.2.3",
+		"@feedbakkr/watch-core": "^1.0.0",
 		"hono": "^4.13.13",
 		"zod": "^4.6.6"
 	},

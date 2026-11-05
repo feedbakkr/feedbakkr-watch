@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@feedbakkr/watch-core':
-        specifier: ^0.2.3
-        version: 0.2.3
+        specifier: ^1.0.0
+        version: 1.0.0
       hono:
         specifier: ^4.13.13
         version: 4.13.16
@@ -322,8 +322,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@feedbakkr/watch-core@0.2.3':
-    resolution: {integrity: sha512-liwBzXD3X0YkA4DhJZPzsKN3RTCIzc1gkOFwyx/MqrQTIIRlmpGsb5qutq7mDcH+vrKr7w0FoTWK+ONfMyhDPQ==}
+  '@feedbakkr/watch-core@1.0.0':
+    resolution: {integrity: sha512-dvWNHgcJ8yWwM55D8XXdhiUC4HzRnOfmBLdmRK8fx0H2wQyG2IWMTnJXxTX6CWrJtDVvWfgdwUdwKAORcGEHlg==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -1193,7 +1193,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@feedbakkr/watch-core@0.2.3': {}
+  '@feedbakkr/watch-core@1.0.0': {}
 
   '@img/colour@1.1.0': {}
 
