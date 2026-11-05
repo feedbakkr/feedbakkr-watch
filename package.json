@@ -11,7 +11,7 @@
 	},
 	"scripts": {
 		"dev": "wrangler dev --port 9416",
-		"deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+		"deploy": "sh scripts/deploy.sh",
 		"migrate:local": "wrangler d1 migrations apply DB --local",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check .",

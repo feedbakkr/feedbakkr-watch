@@ -10,17 +10,33 @@ Your apps send their errors to Watch. Watch groups repeats of the same error, co
 
 ## Install
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/feedbakkr/feedbakkr-watch)
+There are three parts: your own copy of the code, Cloudflare running it, and a key so FeedBakkr can connect. It takes about 10 minutes, and you need a GitHub account and a Cloudflare account (both free).
 
-1. In FeedBakkr, open **Watch → Set up Watch** and copy the admin key it shows you.
-2. Click **Deploy to Cloudflare** above and sign in (a free account is fine).
-3. When Cloudflare asks for `FEEDBAKKR_WATCH_ADMIN_KEY`, paste the admin key.
-4. Click **Deploy**. Cloudflare creates the database, sets up its tables and deploys Watch.
-5. Copy your Watch's address (like `https://feedbakkr-watch.you.workers.dev`) back into FeedBakkr.
+### 1. Copy the code to your GitHub
 
-FeedBakkr then registers your app with Watch and gives you an ingest key and the code to add to your app.
+[Fork this repository](https://github.com/feedbakkr/feedbakkr-watch/fork) into your GitHub account or organisation.
 
-Cloudflare copies this repository into your GitHub or GitLab account and deploys from that copy, so you'll need an account there too.
+Your fork is the code Cloudflare runs, so you decide what runs and when it changes. When there's a new version, you choose when to take it (see [Updating](#updating)).
+
+### 2. Run it on Cloudflare
+
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com), go to **Workers & Pages → Create → Import a repository**.
+2. Connect GitHub when asked. Cloudflare's GitHub app only needs your fork: choose **Only select repositories** and pick it.
+3. Choose your fork, then change three settings:
+   - **Project name:** `feedbakkr-watch`
+   - **Deploy command:** `pnpm run deploy` (not the default `npx wrangler deploy`, which skips setting up the database)
+   - **Enable Preview builds:** off
+4. Leave everything else as it is and click **Deploy**. Cloudflare creates the database and its tables and starts Watch. The first build takes a minute or two.
+
+Your Watch's address is on the Worker's page, like `https://feedbakkr-watch.you.workers.dev`. Until step 3 it answers `NOT_CONFIGURED`, which is expected.
+
+### 3. Add the admin key and connect FeedBakkr
+
+1. In FeedBakkr, open **Watch → Set up Watch** and copy the admin key it makes for you.
+2. In Cloudflare, open the Worker's **Settings → Variables and Secrets**. Add a **Secret** called `FEEDBAKKR_WATCH_ADMIN_KEY` with the admin key as its value, then deploy.
+3. Back in FeedBakkr, paste your Watch's address.
+
+FeedBakkr registers your app with Watch and gives you an ingest key and the code to add to your app.
 
 ## Send errors
 
@@ -69,7 +85,9 @@ Over an app's daily cap, Watch refuses its new errors until midnight UTC. If Clo
 
 ## Updating
 
-FeedBakkr's Watch page tells you when a newer version is available. Each release is a tag here, with notes in [CHANGELOG.md](CHANGELOG.md). Pull the release into your copy of the repository; Cloudflare redeploys it and applies any new database changes.
+FeedBakkr's Watch page tells you when a newer version is available. What changed is in [CHANGELOG.md](CHANGELOG.md).
+
+To update, open your fork on GitHub and click **Sync fork → Update branch**. Cloudflare sees the change, applies any database changes and deploys the new version. Your errors, keys and admin key are kept.
 
 ## Develop
 
